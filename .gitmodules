@@ -1,0 +1,6 @@
+[submodule "zenmind-website"]
+	path = zenmind-website
+	url = https://github.com/joselpq/zenmind-website.git
+[submodule "whatsapp-integration"]
+	path = whatsapp-integration
+	url = https://github.com/joselpq/whatsapp-integration.git

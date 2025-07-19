@@ -1,0 +1,32 @@
+{
+  "name": "zenmind-financial-assistant",
+  "version": "1.0.0",
+  "private": true,
+  "description": "WhatsApp-based financial assistant platform",
+  "workspaces": [
+    "zenmind-website",
+    "whatsapp-integration"
+  ],
+  "scripts": {
+    "dev": "npm run dev:website",
+    "dev:website": "cd zenmind-website && npm run dev",
+    "dev:whatsapp": "cd whatsapp-integration && npm start",
+    "build": "npm run build:website",
+    "build:website": "cd zenmind-website && npm run build",
+    "install:all": "npm install && cd zenmind-website && npm install && cd ../whatsapp-integration && npm install",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "whatsapp",
+    "financial",
+    "assistant",
+    "ai",
+    "chatbot"
+  ],
+  "author": "ZenMind Team",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/zenmind-financial-assistant.git"
+  }
+}
