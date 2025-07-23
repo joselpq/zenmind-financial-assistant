@@ -1,73 +1,77 @@
-# ZenMind Financial Assistant
+# ZenMind - Assistente Financeiro 🇧🇷
 
-A comprehensive WhatsApp-based financial assistant platform that helps users manage their finances through conversational AI.
+Uma plataforma completa de assistente financeiro via WhatsApp que ajuda brasileiros a gerenciar suas finanças através de inteligência artificial conversacional.
 
-## Project Overview
+## 🎯 Missão
 
-ZenMind Financial Assistant is a monorepo containing multiple integrated components that work together to provide a seamless financial management experience via WhatsApp.
+Democratizar o planejamento financeiro para brasileiros de todas as classes sociais, fornecendo conselhos financeiros personalizados através do WhatsApp - a plataforma que já fazem parte do dia a dia.
 
-### Components
+## 📋 Visão Geral do Projeto
 
-- **`zenmind-website/`** - Next.js marketing website and landing page
-- **`whatsapp-integration/`** - WhatsApp Business API webhook service for message handling
+O ZenMind Financial Assistant é um monorepo contendo múltiplos componentes integrados que trabalham juntos para fornecer uma experiência perfeita de gestão financeira via WhatsApp.
 
-## Architecture
+### 🏗️ Arquitetura
 
 ```
-┌─────────────────┐     ┌─────────────────┐
-│                 │     │                 │
-│  ZenMind Website│     │  WhatsApp Users │
-│   (Next.js)     │     │                 │
-│                 │     │                 │
-└────────┬────────┘     └────────┬────────┘
-         │                       │
-         │                       │ Messages
-         │                       │
-         │              ┌────────▼────────┐
-         │              │                 │
-         └──────────────┤ WhatsApp        │
-                        │ Integration     │
-                        │ Service         │
-                        │                 │
-                        └─────────────────┘
+┌─────────────────┐         ┌──────────────────┐         ┌─────────────────┐
+│                 │         │                  │         │                 │
+│  Site ZenMind   │────────▶│  Integração      │────────▶│   PostgreSQL    │
+│   (Next.js)     │         │   WhatsApp       │         │    Database     │
+│                 │         │   (Express.js)   │         │                 │
+└─────────────────┘         └──────────────────┘         └─────────────────┘
+     Vercel                      Railway                      Railway
+       │                           │
+       │                           │
+       ▼                           ▼
+┌─────────────────┐         ┌──────────────────┐
+│                 │         │                  │
+│    Usuários     │         │  WhatsApp Users  │
+│   (Website)     │         │   (+55 11...)    │
+│                 │         │                  │
+└─────────────────┘         └──────────────────┘
 ```
 
-## Quick Start
+### 📁 Componentes
 
-### Prerequisites
+- **`zenmind-website/`** - Site de marketing e landing page em Next.js
+- **`whatsapp-integration/`** - Serviço de webhook da API do WhatsApp Business para processamento de mensagens
 
-- Node.js 18+ and npm
-- WhatsApp Business Account
-- Meta Developer Account
-- Vercel account (for website deployment)
-- Railway account (for webhook service deployment)
+## 🚀 Início Rápido
 
-### Local Development
+### Pré-requisitos
 
-1. Clone the repository:
+- Node.js 18+ e npm
+- Conta do WhatsApp Business
+- Conta Meta Developer
+- Conta Vercel (para deploy do website)
+- Conta Railway (para deploy do serviço webhook)
+
+### Desenvolvimento Local
+
+1. **Clone o repositório:**
 ```bash
-git clone https://github.com/yourusername/zenmind-financial-assistant.git
+git clone https://github.com/joselpq/zenmind-financial-assistant.git
 cd zenmind-financial-assistant
 ```
 
-2. Install dependencies for all components:
+2. **Instale as dependências para todos os componentes:**
 ```bash
-# Install website dependencies
+# Instalar dependências do website
 cd zenmind-website
 npm install
 
-# Install WhatsApp integration dependencies
+# Instalar dependências da integração WhatsApp
 cd ../whatsapp-integration
 npm install
 ```
 
-3. Set up environment variables:
+3. **Configure as variáveis de ambiente:**
 
-For `zenmind-website/`:
-- No environment variables needed for basic setup
+Para `zenmind-website/`:
+- Não há variáveis de ambiente necessárias para configuração básica
 
-For `whatsapp-integration/`:
-Create a `.env` file with:
+Para `whatsapp-integration/`:
+Crie um arquivo `.env` com:
 ```env
 WHATSAPP_BUSINESS_ACCOUNT_ID=your_business_account_id
 META_APP_SECRET=your_app_secret
@@ -77,126 +81,240 @@ WEBHOOK_VERIFY_TOKEN=your_verify_token
 PORT=3000
 ```
 
-4. Run the services:
+4. **Execute os serviços:**
 
 ```bash
 # Terminal 1 - Website
 cd zenmind-website
 npm run dev
 
-# Terminal 2 - WhatsApp Integration
+# Terminal 2 - Integração WhatsApp
 cd whatsapp-integration
 npm start
 ```
 
-## Deployment
+## 🌐 Deploy
 
-### Website Deployment (Vercel)
+### Deploy do Website (Vercel)
 
-1. Install Vercel CLI: `npm i -g vercel`
-2. From `zenmind-website/` directory: `vercel`
-3. Follow the prompts to deploy
-4. Configure custom domain in Vercel dashboard
+1. Instale a CLI do Vercel: `npm i -g vercel`
+2. Do diretório `zenmind-website/`: `vercel`
+3. Siga as instruções para fazer o deploy
+4. Configure o domínio customizado no dashboard do Vercel
 
-### WhatsApp Integration Deployment (Railway)
+### Deploy da Integração WhatsApp (Railway)
 
-1. Connect your GitHub repository to Railway
-2. Configure environment variables in Railway dashboard
-3. Deploy from main branch
+1. Conecte seu repositório GitHub ao Railway
+2. Configure as variáveis de ambiente no dashboard do Railway
+3. Faça o deploy da branch main
 
-## Features
+## ✨ Funcionalidades
 
-### Current Features
-- Professional landing page with service information
-- WhatsApp webhook integration
-- Message receipt and storage
-- Conversation window tracking (24-hour rule)
-- Webhook signature verification
+### Funcionalidades Atuais
+- ✅ Landing page profissional com informações dos serviços
+- ✅ Integração webhook WhatsApp
+- ✅ Recebimento e armazenamento de mensagens
+- ✅ Rastreamento da janela de conversação (regra de 24 horas)
+- ✅ Verificação de assinatura do webhook
+- ✅ Respostas automáticas básicas do Arnaldo
 
-### Planned Features
-- AI-powered financial advice
-- Expense tracking and categorization
-- Budget management
-- Financial goal setting
-- Investment recommendations
-- Bill reminders
-- Financial reports and insights
+### Funcionalidades Planejadas
 
-## Development Workflow
+#### Fase 1: Construtor de Confiança (Meses 1-2)
+- 🔄 Calculadora de orçamento de emergência
+- 🔄 Rastreamento simples de gastos via WhatsApp
+- 🔄 Alertas de gastos diários
+- 🔄 Desafios básicos de economia
 
-1. Create feature branches from `main`
-2. Make changes in the appropriate component directory
-3. Test locally before committing
-4. Create pull requests for review
-5. Merge to `main` after approval
+#### Fase 2: Saúde Financeira (Meses 3-4)
+- 🔄 Rastreamento e categorização de renda
+- 🔄 Lembretes e gestão de contas
+- 🔄 Insights e tendências de gastos
+- 🔄 Comparação com pares (anonimizada)
+- 🔄 Primeiras funcionalidades premium
 
-## Project Structure
+#### Fase 3: Conquista de Objetivos (Meses 5-6)
+- 🔄 Assistente de definição de metas (casa, carro, educação)
+- 🔄 Calculadora de plano de poupança
+- 🔄 Acompanhamento de progresso
+- 🔄 Sistema de motivação
+- 🔄 Compartilhamento social de metas
+
+#### Fase 4: Recomendações Inteligentes (Meses 7-9)
+- 🔄 Recomendações de cartão de crédito
+- 🔄 Comparações de contas bancárias
+- 🔄 Análise empréstimo vs poupança
+- 🔄 Orientação básica de investimentos
+- 🔄 Integração com produtos parceiros
+
+#### Fase 5: Consultor de Investimentos (Meses 10-12)
+- 🔄 Avaliação de perfil de risco
+- 🔄 Recomendações de portfólio de investimentos
+- 🔄 Planejamento de aposentadoria
+- 🔄 Otimização fiscal
+- 🔄 Projeções financeiras avançadas
+
+## 💰 Modelo de Negócio
+
+### Planos Freemium
+
+**Plano Grátis (Mercado de Massa)**
+- ✅ Controle básico de orçamento e gastos
+- ✅ Educação financeira geral
+- ✅ Dicas simples de economia
+- ✅ Definição básica de metas
+- ✅ Funcionalidades da comunidade (comparar com pares)
+
+**Plano Premium (R$9,90/mês)**
+- ✅ Conselhos de investimento personalizados
+- ✅ Planejamento avançado de metas com projeções
+- ✅ Dicas de otimização fiscal
+- ✅ Suporte prioritário
+- ✅ Gestão de conta familiar
+
+### Fluxos de Receita Adicionais
+1. **Baseado em Comissão** (transparente para o usuário)
+2. **Produtos de Dados** (anonimizados, com consentimento)
+3. **Futuro: Produtos Próprios**
+
+## 🛠️ Stack Tecnológico
+
+- **Frontend:** Next.js 14, React, Tailwind CSS
+- **Backend:** Express.js, Node.js
+- **Banco de Dados:** PostgreSQL
+- **Deploy:** Vercel (website), Railway (API)
+- **APIs:** WhatsApp Business API, Meta Graph API
+
+## 📊 Status Atual
+
+### ✅ Concluído
+- Landing page com CTAs do WhatsApp
+- Integração webhook WhatsApp
+- Configuração do banco de dados e persistência de mensagens
+- Fluxo básico de conversação
+- Deploy em produção
+
+### 🚧 Em Progresso
+- Assistente financeiro AI (Arnaldo)
+- Fluxos avançados de conversação
+- Funcionalidades de planejamento financeiro
+
+## 📁 Estrutura do Projeto
 
 ```
 zenmind-financial-assistant/
-├── README.md                    # This file
-├── .gitignore                   # Root gitignore
-├── zenmind-website/             # Marketing website
-│   ├── app/                     # Next.js app directory
-│   ├── public/                  # Static assets
-│   ├── package.json             # Website dependencies
-│   └── README.md                # Website-specific docs
-├── whatsapp-integration/        # WhatsApp webhook service
-│   ├── index.js                 # Main server file
-│   ├── webhookHandler.js        # Webhook logic
-│   ├── messageStore.js          # Message storage
-│   ├── package.json             # Service dependencies
-│   └── README.md                # Service-specific docs
-└── docs/                        # Additional documentation
-    ├── customer-strategy.md     # Customer acquisition strategy
+├── README.md                    # Este arquivo
+├── PROJECT_README.md            # Documentação técnica adicional
+├── GITHUB_SETUP.md             # Guia de configuração do GitHub
+├── package.json                # Configuração do workspace raiz
+├── package-lock.json           # Dependências travadas
+├── zenmind-website/            # Site de marketing
+│   ├── app/                    # Diretório app do Next.js
+│   ├── public/                 # Assets estáticos
+│   ├── package.json            # Dependências do website
+│   └── README.md               # Documentação específica do website
+├── whatsapp-integration/       # Serviço webhook WhatsApp
+│   ├── src/                    # Código fonte
+│   ├── database/               # Esquemas SQL
+│   ├── scripts/                # Utilitários de configuração
+│   ├── index.js                # Arquivo principal do servidor
+│   ├── webhookHandler.js       # Lógica do webhook
+│   ├── messageStore.js         # Armazenamento de mensagens
+│   ├── package.json            # Dependências do serviço
+│   └── README.md               # Documentação específica do serviço
+└── docs/                       # Documentação adicional
+    ├── customer-strategy.md    # Estratégia de aquisição de clientes
+    ├── arnaldo-complete-vision.md # Visão completa do Arnaldo
+    ├── arnaldo-financial-assistant-design.md
+    ├── website-improvement-plan.md
     └── whatsapp-financial-assistant-mvp-plan.md
 ```
 
-## Testing
+## 🧪 Testes
 
-### Website Testing
+### Testes do Website
 ```bash
 cd zenmind-website
-npm run build  # Build check
+npm run build  # Verificação de build
 npm run lint   # Linting
 ```
 
-### WhatsApp Integration Testing
+### Testes da Integração WhatsApp
 ```bash
 cd whatsapp-integration
-npm run test-send  # Send test message
-npm run test-info  # Get phone info
+npm run test-send  # Enviar mensagem de teste
+npm run test-info  # Obter informações do telefone
 ```
 
-## Security Considerations
+### Teste da Integração
+1. Envie uma mensagem WhatsApp para **+55 11 93904-1011**
+2. Receba uma resposta automática do Arnaldo
+3. Verifique o status de saúde em: https://whatsapp-integration-production-06bb.up.railway.app/health
 
-- All WhatsApp webhooks are verified using Meta's signature verification
-- Environment variables are used for sensitive data
-- HTTPS is required for production deployments
-- Follow Meta's WhatsApp Business API security best practices
+## 🔐 Considerações de Segurança
 
-## Contributing
+- Todos os webhooks WhatsApp são verificados usando a verificação de assinatura da Meta
+- Variáveis de ambiente são usadas para dados sensíveis
+- HTTPS é obrigatório para deploys em produção
+- Seguem as melhores práticas de segurança da API WhatsApp Business da Meta
+- Todas as mensagens criptografadas em trânsito
+- Banco de dados PostgreSQL com acesso seguro
+- Nenhum dado financeiro armazenado sem consentimento
+- Práticas compatíveis com LGPD
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+## 📈 Métricas de Sucesso
 
-## License
+### Métricas do Usuário
+- Usuários Ativos Diários (DAU)
+- Retenção de 7 e 30 dias
+- Mensagens por usuário por dia
+- Taxa de conversão premium
+- Taxa de indicação MGM
 
-This project is proprietary and confidential. All rights reserved.
+### Métricas de Impacto Financeiro
+- Economia média por usuário
+- Metas criadas vs alcançadas
+- Melhorias no score de crédito
+- Receita de comissão por usuário
 
-## Support
+## 🤝 Contribuindo
 
-For questions or support, please contact the development team.
+Este é um repositório privado. Membros da equipe devem:
 
-## Links
+1. Fazer fork do repositório
+2. Criar uma branch de funcionalidade (`git checkout -b feature/funcionalidade-incrivel`)
+3. Commit suas mudanças (`git commit -m 'Adicionar funcionalidade incrível'`)
+4. Push para a branch (`git push origin feature/funcionalidade-incrivel`)
+5. Abrir um Pull Request
 
-- [Website](https://www.zenmind.com.br)
-- [WhatsApp Business API Documentation](https://developers.facebook.com/docs/whatsapp/business-api)
-- [Next.js Documentation](https://nextjs.org/docs)
+## 🎯 Fluxo de Trabalho de Desenvolvimento
+
+1. Criar branches de funcionalidade a partir da `main`
+2. Fazer mudanças no diretório do componente apropriado
+3. Testar localmente antes de fazer commit
+4. Criar pull requests para revisão
+5. Merge na `main` após aprovação
+
+## 📞 Suporte
+
+- **Questões técnicas:** Verificar logs do Railway/Vercel
+- **Questões sobre o produto:** Entrar em contato com a equipe de produto
+- **Suporte ao usuário:** Via WhatsApp
+
+Para perguntas ou suporte, entre em contato com a equipe de desenvolvimento.
+
+## 📄 Licença
+
+Este projeto é proprietário e confidencial. Todos os direitos reservados.
+
+## 🔗 Links Úteis
+
+- [Website Oficial](https://www.zenmind.com.br)
+- [Documentação da API WhatsApp Business](https://developers.facebook.com/docs/whatsapp/business-api)
+- [Documentação do Next.js](https://nextjs.org/docs)
 
 ---
 
-Built with ❤️ by the ZenMind team
+**Lembre-se da nossa missão:** Tornar o planejamento financeiro acessível a todos os brasileiros, uma mensagem WhatsApp por vez. 🇧🇷 💚
+
+Construído com ❤️ pela equipe ZenMind
